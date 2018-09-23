@@ -3,11 +3,13 @@
 namespace gestorInventario3m\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use gestorInventario3m\Http\Requests;
-use gestorInventario3m\Producto;
+
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use gestorInventario3m\Http\Requests\ProductoFormRequest;
+use gestorInventario3m\Producto;
 use DB;
 
 class ProductoController extends Controller

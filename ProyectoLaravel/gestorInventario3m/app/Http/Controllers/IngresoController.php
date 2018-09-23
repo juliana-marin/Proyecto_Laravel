@@ -71,7 +71,7 @@ class IngresoController extends Controller
        			$detalle->precio_compra= $precio_compra[$cont];
        			$detalle->precio_venta= $precio_venta[$cont];
        			$detalle->save();
-       			$cont=cont+1;
+       			$cont=$cont+1;
        		}
 
     		DB::comit();

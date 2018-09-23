@@ -19,3 +19,4 @@ Route::resource('almacen/categoria','CategoriaController');
 Route::resource('almacen/producto','ProductoController');
 Route::resource('ventas/cliente','ClienteController');
 Route::resource('compras/ingreso','IngresoController');
+Route::resource('inventarioProducto/inventario','InventarioController');
