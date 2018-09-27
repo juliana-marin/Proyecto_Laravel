@@ -28,6 +28,7 @@ class ProductoFormRequest extends Request
             'nombre'=>'required|max:45',
             'marca'=>'required|max:45',
             'precio'=>'required|max:45',
+            'stock'=>'required|max:45'
             'descripcion'=>'max:150',
             'imagen'=>'mimes:jpeg,bmp,png',
         

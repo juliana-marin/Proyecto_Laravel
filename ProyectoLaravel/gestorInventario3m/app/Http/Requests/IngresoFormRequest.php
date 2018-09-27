@@ -27,6 +27,7 @@ class IngresoFormRequest extends Request
            'idinventario'=>'required',
            'comprobante'=>'required|max:45',
            'num_comprobante'=>'required|max:45',
+           'fecha'=>'required',
            'idproducto'=>'required',
            'cantidad'=>'required',
            'precio_compra'=>'required',

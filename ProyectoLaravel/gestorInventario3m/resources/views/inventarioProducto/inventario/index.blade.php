@@ -29,7 +29,7 @@
 					<td>{{ $inv->cant_producto_restante}}</td>
 					<td>{{ $inv->precio}}</td>
 					<td>
-						<a href="{{URL::action('InventarioController@edit',$inv->idinventario)}}"><button class="btn btn-info">Editar</button></a>
+						<a href="{{URL::action('InventarioController@show',$inv->idinventario)}}"><button class="btn btn-info">Editar</button></a>
                          <a href="" data-target="#modal-delete-{{$inv->idinventario}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					</td>
 				</tr>

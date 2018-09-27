@@ -12,7 +12,7 @@ use gestorInventario3m\Ingreso;
 use gestorInventario3m\DetalleIngreso;
 use DB;
 
-use Carbon\Carbon;
+use Carbon\Carbon;//Control de fechas
 use Response;
 use Illuminate\Support\Collection;
 
@@ -27,9 +27,10 @@ class IngresoController extends Controller
     	if ($request){
     		$query=trim($request->get('searchText'));
     		$ingresos=DB::table('ingreso as i')
+        ->join('inventario as inv','i.idinventario','=','inv.idinventario')
     		->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
-    		->select('i.idingreso','i.fecha','i.comprobante','i.num_comprobante',DB::raw('sum(di.cantidad*precio_compra) as total'))
-    		->where('i.num_comprobante','LIKE','%'.$query.'%')
+    		->select('i.idingreso','inv.idinventario','i.comprobante','i.num_comprobante','i.fecha',DB::raw('sum(di.cantidad*precio_compra) as total'))
+    		->where('i.idingreso','LIKE','%'.$query.'%')
     		->orderBy('idingreso','asc')
     		->groupBy('i.idingreso','i.fecha','i.comprobante','i.num_comprobante')
     		->paginate(10);
@@ -38,43 +39,44 @@ class IngresoController extends Controller
     }
     public function create()
     {
+      $inventarios=DB::table('inventario')->get();
     	$productos=DB::table('producto as pro')
     		->select(DB::raw('CONCAT(pro.nombre," ",pro.marca) AS producto'),'pro.idproducto')
     		->get();
-        return view("compras.ingreso.create",["productos"=>$productos]);
+        return view("compras.ingreso.create",["inventarios"=>$inventarios,"productos"=>$productos]);
     }
 
-     public function store (IngresoaFormRequest $request)
+     public function store (IngresoFormRequest $request)
     {
     	try{
     		DB::beginTransaction();
     		$ingreso=new Ingreso;
-       		$ingreso->idinventario=$request->get('idinventario');
-       		$ingreso->comprobante=$request->get('comprobante');
-       		$ingreso->num_comprobante=$request->get('num_comprobante');
-       		$mytime = Carbon::now('America/Bogota');
-       		$ingreso->fecha=$mytime->toDateTimeString();
-       		$ingreso->save();
+       	$ingreso->idinventario=$request->get('idinventario');
+       	$ingreso->comprobante=$request->get('comprobante');
+       	$ingreso->num_comprobante=$request->get('num_comprobante');
+       	$mytime = Carbon::now('America/Bogota');
+       	$ingreso->fecha=$mytime->toDateTimeString();
+       	$ingreso->save();
 
-       		$idproducto = $request->get('idproducto');
-       		$cantidad = $request->get('cantidad');
-       		$precio_compra = $request->get('precio_compra');
-       		$precio_venta = $request->get('precio_venta');
+       	$idproducto = $request->get('idproducto');
+       	$cantidad = $request->get('cantidad');
+       	$precio_compra = $request->get('precio_compra');
+       	$precio_venta = $request->get('precio_venta');
 
-       		$cont = 0;
+       	$cont = 0;
 
        		while ($cont < cont($idproducto)) {
-       			$detalle=new DetalleIngreso();
-       			$detalle->idingreso= $ingreso->idingreso;
-       			$detalle->idproducto= $idproducto[$cont];
+       			$detalle = new DetalleIngreso();
+       			$detalle->idingreso=$ingreso->idingreso;
+       			$detalle->idproducto=$idproducto[$cont];
        			$detalle->cantidad= $cantidad[$cont];
-       			$detalle->precio_compra= $precio_compra[$cont];
-       			$detalle->precio_venta= $precio_venta[$cont];
+       			$detalle->precio_compra=$precio_compra[$cont];
+       			$detalle->precio_venta=$precio_venta[$cont];
        			$detalle->save();
        			$cont=$cont+1;
        		}
 
-    		DB::comit();
+    		DB::commit();
     	}catch(\Exception $e)
     	{
     		DB::rollback();
@@ -87,8 +89,9 @@ class IngresoController extends Controller
      public function show($id)
     {
     	$ingreso=DB::table('ingreso as i')
-    		->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
-    		->select('i.idingreso','i.fecha','i.comprobante','i.num_comprobante',DB::raw('sum(di.cantidad*precio_compra) as total'))
+        ->join('inventario as inv','i.idinventario','=','inv.idinventario')
+        ->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
+        ->select('i.idingreso','inv.idinventario','i.comprobante','i.num_comprobante','i.fecha',DB::raw('sum(di.cantidad*precio_compra) as total'))
     		->where('i.idingreso','=',$id)
     		->first();
 

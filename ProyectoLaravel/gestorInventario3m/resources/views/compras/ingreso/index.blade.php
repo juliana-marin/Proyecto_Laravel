@@ -13,17 +13,17 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Id</th>
+					<th>Inventario</th>
 					<th>Comprobante</th>
-					<th>N° comprobante</th>
 					<th>Fecha</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($ingresos as $ing)
 				<tr>
 					<td>{{ $ing->idingreso}}</td>
+					<td>{{ $ing->idinventario}}</td>
+					<td>{{ $ing->comprobante.': '. $ing->num_comprobante}}</td>
 					<td>{{ $ing->fecha}}</td>
-					<td>{{ $ing->comprobante}}</td>
-					<td>{{ $ing->num_comprobante}}</td>
 					
 					<td>
 						<a href="{{URL::action('IngresoController@show',$ing->idingreso)}}"><button class="btn btn-primary">Detalles</button></a>

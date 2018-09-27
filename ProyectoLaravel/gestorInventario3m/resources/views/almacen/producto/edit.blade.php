@@ -17,7 +17,7 @@
 
 			{!!Form::model($producto,['method'=>'PATCH','route'=>['almacen.producto.update',$producto->idproducto],'files'=>'true'])!!}
             {{Form::token()}}
-           <div class="row">
+    <div class="row">
     	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
     		 <div class="form-group">
             	<label for="nombre">Nombre</label>
@@ -53,6 +53,12 @@
             	<input type="text" name="precio" required value="{{$producto->precio}}" class="form-control">
             </div>
     	</div>
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+            <div class="form-group">
+                <label for="stock">Stock</label>
+                <input type="text" name="stock" required value="{{$producto->stock}}" class="form-control">
+            </div>
+        </div>
 
     	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"></div>
     		<div class="form-group">

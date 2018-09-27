@@ -17,8 +17,7 @@ class Ingreso extends Model
     	'idinventario',
     	'comprobante',
     	'num_comprobante',
-    	'fecha',
-    	'descripcion'
+    	'fecha'
     ];
 
     protected $guarded =[

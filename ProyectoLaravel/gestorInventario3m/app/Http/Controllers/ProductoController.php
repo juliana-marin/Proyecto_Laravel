@@ -5,12 +5,12 @@ namespace gestorInventario3m\Http\Controllers;
 use Illuminate\Http\Request;
 
 use gestorInventario3m\Http\Requests;
-
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use gestorInventario3m\Http\Requests\ProductoFormRequest;
 use gestorInventario3m\Producto;
 use DB;
+
 
 class ProductoController extends Controller
 {
@@ -24,7 +24,7 @@ class ProductoController extends Controller
             $query=trim($request->get('searchText'));
             $productos=DB::table('producto as p')
             ->join('categoria as c','p.idcategoria','=','c.idcategoria')
-            ->select('p.idproducto','p.nombre','p.marca','p.precio','c.nombre as categoria','p.descripcion','p.imagen')
+            ->select('p.idproducto','p.nombre','p.marca','p.precio','p.stock','c.nombre as categoria','p.descripcion','p.imagen')
             ->where('p.nombre','LIKE','%'.$query.'%')
             ->orwhere('p.codigo','LIKE','%'.$query.'%')
             ->orderBy('idproducto','asc')
@@ -46,11 +46,12 @@ class ProductoController extends Controller
         $producto->nombre=$request->get('nombre');
         $producto->marca=$request->get('marca');
         $producto->precio=$request->get('precio');
+        $producto->stock=$request->get('stock');
         $producto->descripcion=$request->get('descripcion');
 
         if (Input::hasFile('imagen')) {
            $file=Input::file('imagen');
-           $file->move(public_path().'/imagenes/productos/',$file->getClientOriginalName());
+           $file->move(public_path().'imagenes/productos/',$file->getClientOriginalName());
            $producto->imagen=$file->getClientOriginalName();
         }
         $producto->save();
@@ -73,6 +74,7 @@ class ProductoController extends Controller
         $producto->nombre=$request->get('nombre');
         $producto->marca=$request->get('marca');
         $producto->precio=$request->get('precio');
+        $producto->stock=$request->get('stock');
         $producto->descripcion=$request->get('descripcion');
         
         if (Input::hasFile('imagen')) {

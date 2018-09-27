@@ -12,24 +12,62 @@
 				</ul>
 			</div>
 			@endif
-
-			{!!Form::model($inventario,['method'=>'PATCH','route'=>['inventarioProducto.inventario.update',$inventario->idinventario]])!!}
+        </div>
+    </div>
+			{!!Form::model($inventario,['method'=>'PATCH','route'=>['inventarioProducto.inventario.update',$inventario->idinventario],'files'=>'true'])!!}
             {{Form::token()}}
-            <div class="form-group">
-            	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre...">
+    <div class="row">
+    	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+    		<div class="form-group">
+    			<label>Producto</label>
+    			<select name="idproducto" class="form-control">
+    				@foreach ($productos as $p)
+    					@if ($p->idproducto ==$inventario->idproducto)	
+    				<option value="{{$p->idproducto}}" selected>{{$p->nombre}}</option>
+    				@else
+    					<option value="{{$p->idproducto}}" >{{$p->nombre}}</option>
+    				@endif
+    				@endforeach
+    			</select>
+    		</div>
+    	</div>
+
+    	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+    		<div class="form-group">
+            	<label for="cant_producto_ingreso">Productos ingresados</label>
+            	<input type="text" name="cant_producto_ingreso" required value="{{$inventario->cant_producto_ingreso}}" class="form-control">
             </div>
-            <div class="form-group">
-            	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripción...">
+    	</div>
+
+    	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+    		<div class="form-group">
+            	<label for="cant_producto_vendido">Productos vendidos</label>
+            	<input type="text" name="cant_producto_vendido" required value="{{$inventario->cant_producto_vendido}}" class="form-control">
             </div>
-            <div class="form-group">
+    	</div>
+
+    	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+    		<div class="form-group">
+            	<label for="cant_producto_restante">Productos restantes</label>
+            	<input type="text" name="cant_producto_restante" required value="{{$inventario->cant_producto_restante}}" class="form-control">
+            </div>
+    	</div>
+
+    	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+    		<div class="form-group">
+            	<label for="precio">Precio</label>
+            	<input type="text" name="precio" required value="{{$inventario->precio}}" class="form-control">
+            </div>
+    	</div>
+
+    	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+			<div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
+		</div>
+    </div>
+            
 
 			{!!Form::close()!!}		
-            
-		</div>
-	</div>
 @endsection

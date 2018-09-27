@@ -11,7 +11,7 @@ role="dialog" tabindex="-1" id="modal-delete-{{$inv->idinventario}}">
                 <h4 class="modal-title">Eliminacion del Inventario</h4>
 			</div>
 			<div class="modal-body">
-				<p>¿Esta seguro que desea eliminar este inventario?</p>
+				<p>¿Esta seguro que desea eliminar el inventario de este producto?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
