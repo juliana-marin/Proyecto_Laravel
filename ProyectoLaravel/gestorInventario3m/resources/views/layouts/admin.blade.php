@@ -49,15 +49,15 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Juan Sebastian Sanchez</span>
+                  <small class="bg-btn">Online</small>
+                  <span class="hidden-xs" ba>Juliana Marín</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
-                  <li class="user-header">
+                  <li class="user-header" style="background-color: #084B8A">
                     <p>
                       Usuario: Administrador - 3 Marias
-                      <small> jssancheza_1@uqvirtual.edu.co</small>
+                      <small> juliana@gmail.com</small>
                     </p>
                   </li>
                   
@@ -65,7 +65,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Cerrar</a>
                     </div>
                   </li>
                 </ul>
@@ -93,8 +93,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="almacen/producto"><i class="fa fa-circle-o"></i> Producto</a></li>
-                <li><a href="almacen/categoria"><i class="fa fa-circle-o"></i> Categorías</a></li>
+                <li><a href="{{url('almacen/producto')}}"><i class="fa fa-check"></i> Producto</a></li>
+                <li><a href="{{url('almacen/categoria')}}"><i class="fa fa-check"></i> Categorías</a></li>
               </ul>
             </li>
             
@@ -105,7 +105,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="compras/ingreso"><i class="fa fa-circle-o"></i>Ingresos</a></li>
+                <li><a href="{{url('compras/ingreso')}}"><i class="fa fa-check"></i>Ingresos</a></li>
               </ul>
             </li>
 
@@ -116,7 +116,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="inventario/inventario"><i class="fa fa-circle-o"></i>Inventario de productos</a></li>
+                <li><a href="{{url('inventarioProducto/inventario')}}"><i class="fa fa-check"></i>Inventario de productos</a></li>
               </ul>
             </li>
 
@@ -128,8 +128,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="ventas/cliente"><i class="fa fa-child"></i> Clientes</a></li>
+                <li><a href="{{url('ventas/venta')}}"><i class="fa fa-check"></i> Ventas</a></li>
+                <li><a href="{{url('ventas/cliente')}}"><i class="fa fa-check"></i> Clientes</a></li>
               </ul>
             </li>
                        
@@ -139,7 +139,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="{{url('seguridad/usuario')}}"><i class="fa fa-check"></i> Usuarios</a></li>
                 
               </ul>
             </li>

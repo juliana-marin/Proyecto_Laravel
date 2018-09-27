@@ -1,6 +1,6 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-role="dialog" tabindex="-1" id="modal-delete-{{$inv->idinventario}}">
-	{{Form::Open(array('action'=>array('InventarioController@destroy',$inv->idinventario),'method'=>'delete'))}}
+role="dialog" tabindex="-1" id="modal-delete-{{$ven->idVenta}}">
+	{{Form::Open(array('action'=>array('VentaController@destroy',$ven->idVenta),'method'=>'delete'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,10 +8,10 @@ role="dialog" tabindex="-1" id="modal-delete-{{$inv->idinventario}}">
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Eliminacion del Inventario</h4>
+                <h4 class="modal-title">Cancelar Venta </h4>
 			</div>
 			<div class="modal-body">
-				<p>¿Esta seguro que desea eliminar este inventario?</p>
+				<p>¿Esta seguro que desea cancelar esta venta?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

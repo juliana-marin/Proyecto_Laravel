@@ -4,21 +4,23 @@ namespace gestorInventario3m;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class DetalleVenta extends Model
 {
-     protected $table='producto';
+    protected $table='detalle_factura';
 
-    protected $primaryKey='idproducto';
+    protected $primaryKey='iddetalle_factura';
 
     public $timestamps=false;
 
+
     protected $fillable =[
-        'idcategoria',
-    	'nombre',
-    	'marca',
+    	'idproducto',
+    	'idventa',
+    	'cantidad',
     	'precio',
+    	'impuesto',
     	'descripcion',
-    	'imagen'
+    	'descuento'
     ];
 
     protected $guarded =[

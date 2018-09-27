@@ -4,7 +4,7 @@ namespace gestorInventario3m\Http\Requests;
 
 use gestorInventario3m\Http\Requests\Request;
 
-class ProductoFormRequest extends Request
+class UsuarioFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,9 @@ class ProductoFormRequest extends Request
     public function rules()
     {
         return [
-            'idcategoria'=>'required',
-            'nombre'=>'required|max:45',
-            'marca'=>'required|max:45',
-            'precio'=>'required|max:45',
-            'descripcion'=>'max:150',
-            'imagen'=>'mimes:jpeg,bmp,png'
-        
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
         ];
     }
 }

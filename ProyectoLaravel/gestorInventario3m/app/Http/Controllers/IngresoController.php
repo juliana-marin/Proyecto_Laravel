@@ -20,7 +20,7 @@ class IngresoController extends Controller
 {
      public function __construct()
     {
-
+      
     }
     public function index(Request $request)
     {
@@ -61,7 +61,7 @@ class IngresoController extends Controller
        	$idproducto = $request->get('idproducto');
        	$cantidad = $request->get('cantidad');
        	$precio_compra = $request->get('precio_compra');
-       	$precio_venta = $request->get('precio_venta');
+       	$precion_venta = $request->get('precion_venta');
 
        	$cont = 0;
 
@@ -71,7 +71,7 @@ class IngresoController extends Controller
        			$detalle->idproducto=$idproducto[$cont];
        			$detalle->cantidad= $cantidad[$cont];
        			$detalle->precio_compra=$precio_compra[$cont];
-       			$detalle->precio_venta=$precio_venta[$cont];
+       			$detalle->precion_venta=$precio_venta[$cont];
        			$detalle->save();
        			$cont=$cont+1;
        		}
@@ -91,14 +91,14 @@ class IngresoController extends Controller
     	$ingreso=DB::table('ingreso as i')
         ->join('inventario as inv','i.idinventario','=','inv.idinventario')
         ->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
-        ->select('i.idingreso','inv.idinventario','i.comprobante','i.num_comprobante','i.fecha',DB::raw('sum(di.cantidad*precio_compra) as total'))
+        ->select('i.idingreso','inv.idinventario','i.comprobante','i.num_comprobante','i.fecha')
     		->where('i.idingreso','=',$id)
     		->first();
 
-    	$detalles=DB::table('detalle_ingreso as d')
-    	->join('producto as pro','d.idproducto','=','pro.idproducto')
-    		->select('pro.nombre as producto','d.cantidad','d.precio_compra','d.precio_venta')
-    		->where('d.idingreo','=',$id)
+    	$detalles=DB::table('detalle_ingreso as di')
+    	->join('producto as pro','di.idproducto','=','pro.idproducto')
+    		->select('pro.nombre as producto','di.cantidad','di.precio_compra','di.precion_venta')
+    		->where('di.idingreso','=',$id)
     		->get();
 
         return view("compras.ingreso.show",["ingreso"=>$ingreso,"detalles"=>$detalles]);

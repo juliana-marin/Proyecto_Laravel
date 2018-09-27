@@ -1,22 +1,17 @@
 <?php
-
 namespace gestorInventario3m\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use gestorInventario3m\Http\Requests;
-
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use gestorInventario3m\Http\Requests\InventarioFormRequest;
 use gestorInventario3m\Inventario;
 use DB;
-
 class InventarioController extends Controller
 {
      public function __construct()
     {
-
+        
     }
     public function index(Request $request)
     {
@@ -35,7 +30,6 @@ class InventarioController extends Controller
     }
     public function create()
     {
-
         $productos=DB::table('producto')->get();
        return view("inventarioProducto.inventario.create",["productos"=>$productos]);
     }
@@ -49,7 +43,6 @@ class InventarioController extends Controller
         $inventario->precio=$request->get('precio');
         $inventario->save();
         return Redirect::to('inventarioProducto/inventario');
-
     }
     public function show($id)
     {
@@ -57,8 +50,8 @@ class InventarioController extends Controller
     }
     public function edit($id)
     {
-    	$inventario=Inventario::findOrFail($id);
-    	$productos=DB::table('producto')->get();
+        $inventario=Inventario::findOrFail($id);
+        $productos=DB::table('producto')->get();
         return view("inventarioProducto.inventario.edit",["inventario"=>$inventario,"productos"=>$productos]);
     }
     public function update(InventarioFormRequest $request,$id)
@@ -78,9 +71,4 @@ class InventarioController extends Controller
         $inventario->delete($id);
         return Redirect::to('inventarioProducto/inventario');
     }
-
-
-
-
-
 }

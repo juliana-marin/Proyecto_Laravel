@@ -8,14 +8,16 @@ use gestorInventario3m\Http\Requests;
 use gestorInventario3m\Categoria;
 use Illuminate\Support\Facades\Redirect;
 use gestorInventario3m\Http\Requests\CategoriaFormRequest;
+
 use DB;
 
 class CategoriaController extends Controller
 {
     public function __construct()
     {
-
+      $this->middleware('auth');
     }
+
     public function index(Request $request)
     {
         if ($request)

@@ -13,28 +13,27 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Id</th>
-					<th>Nombre</th>
 					<th>Categoria</th>
+					<th>Nombre</th>
 					<th>Marca</th>
 					<th>Precio</th>
-					<th>Stock</th>
 					<th>Imagen</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($productos as $pro)
 				<tr>
 					<td>{{ $pro->idproducto}}</td>
-					<td>{{ $pro->nombre}}</td>
 					<td>{{ $pro->categoria}}</td>
+					<td>{{ $pro->nombre}}</td>
 					<td>{{ $pro->marca}}</td>
 					<td>{{ $pro->precio}}</td>
-					<td>{{ $pro->stock}}</td>
+
 					<td>
-						<img src="{{asset('imagenes/productos'.$pro->imagen)}}" alt="{{ $pro->nombre}}" height="100px" width="100px" class="img-thumbnail">
+						<img src="{{asset('imagenes/productos/'.$pro->imagen)}}" alt="{{ $pro->nombre}}" height="100px" width="100px" class="img-thumbnail">
 					</td>
 					<td>
 						<a href="{{URL::action('ProductoController@edit',$pro->idproducto)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$pro->idproducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						 <a href="" data-target="#modal-delete-{{$pro->idproducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					</td>
 				</tr>
 				@include('almacen.producto.modal')

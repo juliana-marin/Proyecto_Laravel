@@ -14,7 +14,7 @@ class ClienteController extends Controller
 {
   public function __construct()
     {
-
+        
     }
     public function index(Request $request)
     {

@@ -55,10 +55,10 @@
     	</div>
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
             <div class="form-group">
-                <label for="stock">Stock</label>
-                <input type="text" name="stock" required value="{{$producto->stock}}" class="form-control">
+                <label for="nombre">Descripcion</label>
+                <input type="text" name="descripcion" value="{{$producto->descripcion}}" class="form-control" placeholder="Descripcion del producto...">
             </div>
-        </div>
+        </div>    
 
     	<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"></div>
     		<div class="form-group">
@@ -67,12 +67,6 @@
             	@if (($producto->imagen)!="")
             		<img src="{{asset('imagenes/productos/'.$producto->imagen)}}" height="300px" width="300px">
             	@endif
-            </div>
-
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"></div>
-    		<div class="form-group">
-            	<label for="nombre">Descripcion</label>
-            	<input type="text" name="descripcion" value="{{$producto->descripcion}}" class="form-control" placeholder="Descripcion del producto...">
             </div>
 
 			<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
