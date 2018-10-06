@@ -25,8 +25,8 @@
             	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
             </div>
             <div class="form-group">
-            	<button class="btn btn-primary" type="submit">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-outline-primary" type="submit">Guardar</button>
+            	<button class="btn btn-outline-danger" type="reset">Cancelar</button>
             </div>
 
 			{!!Form::close()!!}		

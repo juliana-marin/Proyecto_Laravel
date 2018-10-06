@@ -21,6 +21,7 @@ Route::resource('ventas/cliente','ClienteController');
 Route::resource('compras/ingreso','IngresoController');
 Route::resource('inventarioProducto/inventario','InventarioController');
 Route::resource('ventas/venta','VentaController');
+Route::resource('inicio/inicio','InicioController');
 Route::resource('seguridad/usuario','UsuarioController');
 
 Route::auth();

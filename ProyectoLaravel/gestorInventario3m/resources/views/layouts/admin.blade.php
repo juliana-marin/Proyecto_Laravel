@@ -22,7 +22,7 @@
 
   </head>
   <!-- Color de la cabecera -->
-  <body class="hold-transition skin- sidebar-mini" background="3marias.jpg" >
+  <body class="hold-transition skin-black sidebar-mini" >
     <div class="wrapper">
 
       <header class="main-header">
@@ -54,10 +54,11 @@
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
-                  <li class="user-header" style="background-color: #084B8A">
-                    <p>
+                  <li class="user-header" style="background-color: #FFFFFF">
+                    <p style="color:#848484">
                       Usuario: Administrador - 3 Marias
-                      <small> juliana@gmail.com</small>
+                      <medium> juliana@gmail.com</medium>
+                      <center><img src="/imagenes/usuario.jpg" class="img-responsive" width= "110" height="110"></center> 
                     </p>
                   </li>
                   
@@ -77,19 +78,20 @@
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar ">
+      <!--Menu lateral color negro-->
+      <aside class="main-sidebar" style="background-color: #000000">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar ">
           <!-- Sidebar user panel -->
                     
           <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu skin-red">
+          <ul class="sidebar-menu" style="background-color: #000000">
             <li class="header"></li>
             
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Almacén</span>
+                <span >Almacén</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -155,7 +157,8 @@
 
        <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      <!--Color de fondo del panel de informacion-->
+      <div class="content-wrapper" style="background-color: #1B0A2A">
         
         <!-- Main content -->
         <section class="content">
@@ -164,7 +167,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Gestor de Inventario</h3>
+                  <h3 class="box-title"><b>Gestor de Inventario</b></h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
