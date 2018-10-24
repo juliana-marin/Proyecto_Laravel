@@ -10,15 +10,18 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap3-wysihtml5.min.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
     <link rel="apple-touch-icon" href="{{asset('img/apple-touch-icon.png')}}">
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">
+
 
   </head>
   <!-- Color de la cabecera -->
@@ -44,21 +47,21 @@
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+              <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
               <!-- Messages: style can be found in dropdown.less-->
               
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-btn">Online</small>
-                  <span class="hidden-xs" ba>Juliana Marín</span>
-                </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"role="button" aria-expanded="false">
+            <i class="fa fa-user"></i> 
+          </a>
+                  
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header" style="background-color: #FFFFFF">
                     <p style="color:#848484">
                       Usuario: Administrador - 3 Marias
-                      <medium> juliana@gmail.com</medium>
-                      <center><img src="/imagenes/usuario.jpg" class="img-responsive" width= "110" height="110"></center> 
+                      <medium> Juliana Marín</medium> 
                     </p>
                   </li>
                   
@@ -66,6 +69,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
+
                       <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Cerrar</a>
                     </div>
                   </li>
@@ -90,7 +94,7 @@
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-laptop"></i>
+                <i class="fa fa-book"></i>
                 <span >Almacén</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -134,17 +138,40 @@
                 <li><a href="{{url('ventas/cliente')}}"><i class="fa fa-check"></i> Clientes</a></li>
               </ul>
             </li>
-                       
+
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-money"></i> <span>Acceso</span>
+                <i class="fa fa-at"></i> <span>Envio de Emails</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('seguridad/usuario')}}"><i class="fa fa-check"></i> Usuarios</a></li>
+                <li><a href="{{url('correo/correo')}}"><i class="fa fa-edit"></i>Nuevo email</a></li>
                 
               </ul>
             </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-glass"></i> <span>Menu</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('menuProductos/menu')}}"><i class="fa fa-coffee"></i>Menu de productos</a></li>
+                
+              </ul>
+            </li>
+                       
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-gears"></i> <span>Acceso</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('seguridad/usuario')}}"><i class="fa fa-group"></i> Usuarios</a></li>
+                
+              </ul>
+            </li>
+
                                     
           </ul>
         </section>
@@ -194,17 +221,30 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <!--Fin-Contenido-->
+    <!--Fin-Contenido-->
+      <footer class="main-footer" >
+        <strong>Siguenos en nuestras Redes Sociales:
+          <a href="#"><i class="fa fa-facebook-official fa-2x"></i></a>
+          <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+          <a href="#"><i class="fa fa-whatsapp fa-2x"></i></a>
+       </strong>
+      </footer>
      
 
       
     <!-- jQuery 2.1.4 -->
-    <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
+    <script src="{{ asset ( 'js/jQuery-2.1.4.min.js' )}}"></script>
     @stack('scripts')
     <!-- Bootstrap 3.3.5 -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+    <script src="{{ asset ( 'js/bootstrap.min.js' )}}"></script>
+    <script src="{{ asset ( 'js/bootstrap-select.min.js' )}}"></script>
+    <script src="{{ asset ( 'js/bootstrap3-wysihtml5.all.min.js' )}}"></script>
+    <script src="{{ asset ( 'js/main.js' )}}"></script>
+    <script src="{{ asset ( 'js/pinterest_grid.js' )}}"></script>
+   
     <!-- AdminLTE App -->
-    <script src="{{asset('js/app.min.js')}}"></script>
+    <script src="{{ asset ('js/app.min.js')}}"></script>
+
     
   </body>
 </html>

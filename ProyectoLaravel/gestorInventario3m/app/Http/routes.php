@@ -22,9 +22,16 @@ Route::resource('compras/ingreso','IngresoController');
 Route::resource('inventarioProducto/inventario','InventarioController');
 Route::resource('ventas/venta','VentaController');
 Route::resource('inicio/inicio','InicioController');
+Route::resource('correo/correo','CorreoController');
+Route::resource('menuProductos/menu','MenuController');
 Route::resource('seguridad/usuario','UsuarioController');
+
+Route::get('form_enviar_correo', 'CorreoController@crear');
+Route::post('enviar_correo', 'CorreoController@enviar');
+Route::post('cargar_archivo_correo', 'CorreoController@store');
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/{slug?}', 'HomeController@index');
+
