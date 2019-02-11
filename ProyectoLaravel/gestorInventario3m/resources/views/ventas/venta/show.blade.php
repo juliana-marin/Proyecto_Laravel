@@ -1,34 +1,29 @@
 @extends ('layouts.admin')
 @section ('contenido')
 	<div class="row">
-		<h3>  &nbsp; Detalle de venta: {{ $venta->idVenta}}</h3>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<h3> &nbsp; Detalle de venta: {{ $venta->idVenta}}</h3>
+		
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 			<div class="form-group">
-				<label for="cliente">Cliente</label>
-				<p>{{$venta->nombre}}</p>
-			</div>
-		</div>
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-			<div class="form-group">
-				<label for="inventario">Inventario</label>
+				<label for="comprobante">Inventario</label>
 				<p>{{$venta->idinventario}}</p>
 			</div>
 		</div>
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 			<div class="form-group">
-				<label for="fecha">Fecha</label>
+				<label for="comprobante">Fecha</label>
 				<p>{{$venta->fecha}}</p>
 			</div>
 		</div>
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 			<div class="form-group">
-				<label for="valor_total">Valor total</label>
+				<label for="fecha">Valor Total</label>
 				<p>{{$venta->valor_total}}</p>
 			</div>
 		</div>
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 			<div class="form-group">
-				<label for="estado_venta">Estado</label>
+				<label for="fecha">Estado</label>
 				<p>{{$venta->estado_venta}}</p>
 			</div>
 		</div>
@@ -43,19 +38,16 @@
 					 		<th>Producto</th>
 							<th>Cantidad</th>
 							<th>Precio</th>
-							<th>IVA</th>
-                        	<th>Dcto</th>
-							<th>Descripcion</th>
-                        	<th>Subtotal</th>
+							<th>Impuesto</th>
+							<th>Descuento</th>
     				 	</thead>
                     	<tfoot>
                         	<th></th>
                         	<th></th>
                         	<th></th>
+                        	<th></th>  
                         	<th></th>
-                           	<th></th>
-                        	<th></th>
-                        	<th><h4 id="total">{{$venta->valor_total}}</h4><input type="hidden" name="valor_total" id="valor_total"></th>
+                        	<th></th>           
                         </tfoot>
     				<tbody>
     					@foreach($detalles as $det)
@@ -65,7 +57,6 @@
     						<td>{{$det->precio}}</td>
     						<td>{{$det->impuesto}}</td>
     						<td>{{$det->descuento}}</td>
-    						<td>{{$det->descripcion}}</td>
     					</tr>
     					@endforeach
 

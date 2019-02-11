@@ -1,6 +1,7 @@
 @extends ('layouts.admin')
 @section ('contenido')
 	<div class="row">
+		<h3> &nbsp; Detalle de ingreso: {{ $ingreso->idingreso}}</h3>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="form-group">
 				<label for="Inventario">Inventario</label>
@@ -37,15 +38,12 @@
 							<th>Cantidad</th>
 							<th>Precio compra</th>
 							<th>Precio venta</th>
-                           	<th>Subtotal</th>
     				 	</thead>
                     	<tfoot>
                         	<th></th>
                         	<th></th>
                         	<th></th>
-                        	<th></th>
-                        	<th></th>              
-                        	<th><h4 id="total">{{$ingreso->$valor_total}}</h4><input type="hidden" name="total" id="total"></th>
+                        	<th></th>            
                         </tfoot>
     				<tbody>
     					@foreach($detalles as $det)

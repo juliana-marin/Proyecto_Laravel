@@ -73,4 +73,14 @@ class AuthController extends Controller
         return redirect('login');
 
     }
+
+
+    public function redirectPath()
+    {
+        if (auth()->user()->cliente) {
+            return 'menuProductos/menu';
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : 'inicio/inicio';
+    }
 }

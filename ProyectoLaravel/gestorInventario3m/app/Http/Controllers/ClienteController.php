@@ -5,16 +5,18 @@ namespace gestorInventario3m\Http\Controllers;
 use Illuminate\Http\Request;
 use gestorInventario3m\Http\Requests;
 use gestorInventario3m\Cliente;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use gestorInventario3m\Http\Requests\ClienteFormRequest;
 use DB;
+
+use Fpdf;
+
 
 class ClienteController extends Controller
 {
   public function __construct()
     {
-        
+        $this->middleware('auth');
     }
     public function index(Request $request)
     {
@@ -71,7 +73,45 @@ class ClienteController extends Controller
         return Redirect::to('ventas/cliente');
     }
 
+    public function reporte(){
+         //Obtenemos los registros
+        $registros=DB::table('cliente')    
+            ->orderBy('idCliente','asc')
+            ->get();
 
+         $pdf = new Fpdf();
+         $pdf::AddPage();
+         $pdf::SetTextColor(35,56,113);
+         $pdf::SetFont('Arial','B',11);
+         $pdf::Cell(0,10,utf8_decode("Listado Clientes"),0,"","C");
+         $pdf::Ln();
+         $pdf::Ln();
+         $pdf::SetTextColor(0,0,0);  // Establece el color del texto 
+         $pdf::SetFillColor(206, 246, 245); // establece el color del fondo de la celda 
+         $pdf::SetFont('Arial','B',10); 
+         //El ancho de las columnas debe de sumar promedio 190        
+         $pdf::cell(60,8,utf8_decode("Nombre"),1,"","L",true);
+         $pdf::cell(45,8,utf8_decode("Documento"),1,"","L",true);
+         $pdf::cell(55,8,utf8_decode("Email"),1,"","L",true);
+         $pdf::cell(30,8,utf8_decode("Teléfono"),1,"","L",true);
+         
+         $pdf::Ln();
+         $pdf::SetTextColor(0,0,0);  // Establece el color del texto 
+         $pdf::SetFillColor(255, 255, 255); // establece el color del fondo de la celda
+         $pdf::SetFont("Arial","",9);
+         
+         foreach ($registros as $reg)
+         {
+            $pdf::cell(60,6,utf8_decode($reg->nombre),1,"","L",true);
+            $pdf::cell(45,6,utf8_decode($reg->cedula),1,"","L",true);
+            $pdf::cell(55,6,utf8_decode($reg->email),1,"","L",true);
+            $pdf::cell(30,6,utf8_decode($reg->telefono),1,"","L",true);
+            $pdf::Ln(); 
+         }
+
+         $pdf::Output();
+         exit;
+    }
 
 
 }

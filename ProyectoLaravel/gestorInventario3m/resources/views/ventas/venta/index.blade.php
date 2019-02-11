@@ -2,7 +2,7 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de Ventas<a href="venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
+		<h3>Listado de Ventas<a href="venta/create"><button class="btn btn-success">Nuevo</button></a><a href="{{url('reporteventas')}}"target="black"><button class="btn btn-info">Informe</button></a></h3>
 		@include('ventas.venta.search')
 	</div>
 </div>
@@ -32,7 +32,8 @@
 					
 					<td>
 						<a href="{{URL::action('VentaController@show',$ven->idVenta)}}"><button class="btn btn-primary">Detalles</button></a>
-                         <a href="" data-target="#modal-delete-{{$ven->idVenta}}" data-toggle="modal"><button class="btn btn-danger">Cancelar</button></a>
+						<a target="_blank" href="{{URL::action('VentaController@reportec',$ven->idVenta)}}"><button class="btn btn-info">Reporte</button></a>
+                          <a href="" data-target="#modal-delete-{{$ven->idVenta}}" data-toggle="modal"><button class="btn btn-danger">Cancelar</button></a>
 					</td>
 				</tr>
 				@include('ventas.venta.modal')

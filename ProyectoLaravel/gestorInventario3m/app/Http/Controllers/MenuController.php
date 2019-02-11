@@ -15,18 +15,19 @@ class MenuController extends Controller
 {
     public function __construct()
     {
-     
+     $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-    	$productos=DB::table('producto')->get();
-       return view('menuProductos.menu.index',["productos"=>$productos]);
+    	$query=trim($request->get('searchText'));
+    	$productos=DB::table('Producto as producto')->get();
+       	return view('menuProductos.menu.index',["productos"=>$productos,"searchText"=>$query]);
     }
 
      public function show($id)
     {
-    	return view("menuProductos.menu.show",["producto"=>Producto::findOrFail($id)]);
+    	return view("menuProductos.menu.index",["producto"=>Producto::findOrFail($id)]);
     	
     }
 }

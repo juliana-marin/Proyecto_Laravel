@@ -34,7 +34,7 @@ class VentaFormRequest extends Request
            'precio'=>'required',
            'impuesto'=>'required',
            'descripcion'=>'max:100',
-           'descuento'=>'required'
+           'descuento'=>'required',
           
         ];
     }

@@ -8,10 +8,10 @@ role="dialog" tabindex="-1" id="modal-delete-{{$ing->idingreso}}">
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Cancelar Ingreso </h4>
+                <h4 class="modal-title">Anular Ingreso </h4>
 			</div>
 			<div class="modal-body">
-				<p>¿Esta seguro que desea cancelar este ingreso?</p>
+				<p>¿Esta seguro que desea Anular este ingreso?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

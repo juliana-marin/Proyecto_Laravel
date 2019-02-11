@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetalleVenta extends Model
 {
-    protected $table='detalle_factura';
+    protected $table='detalle_venta';
 
     protected $primaryKey='iddetalle_factura';
 

@@ -22,8 +22,8 @@
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-md-12  col-xs-12">
             <div class="form-group">
-            	<label for="pidcliente">Cliente</label>
-            	<select name="pidcliente" id="pidcliente" class="form-control selectpicker" data-live-search="true">
+            	<label for="cliente">Cliente</label>
+            	<select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true">
             		@foreach ($clientes as $cliente)
             		<option value="{{$cliente->nombre}}"> {{$cliente->nombre}}</option>
             		@endforeach
@@ -58,11 +58,7 @@
           <div class="col-lg-3 col-sm-3 col-md-3  col-xs-3">
             <div class="form-group">
                 <label for="estado_venta">Estado de la venta</label>
-                <select name="estado_venta" class="form-control">
-                    <option value="activo">Activo</option>
-                    <option value="anulado">Anulado</option>
-                    <option value="cancelado">Cancelado</option>
-                    <option value="finalizado">Finalizado</option>
+                <input type="text" name="estado_venta" value="Aceptado" readonly="readonly" class="form-control" placeholder="Aceptado">
                 </select>
             </div>
         </div>
@@ -92,11 +88,7 @@
             <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
                     <div class="form-group">
                        <label>Precio</label>
-                        <select name="pprecio" disabled class="form-control selectpicker" id="pprecio" data-live-search="true">
-                           @foreach ($productos as $producto)
-                           <option value="{{$producto->precio}}">{{$producto->precio}}</option>
-                           @endforeach
-                        </select>
+                        <input type="number" name="pprecio" id="pprecio" class="form-control" placeholder="Precio"></input>
                     </div>
                 </div>
 
@@ -122,6 +114,7 @@
             </div>   		
     		
     		<div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
+                <label></label>
     			<div class="form-group">
     				<button class="btn btn-primary" id="bt_add" type="button">Agregar</button>
     			</div>
@@ -134,14 +127,12 @@
 					 	<th>Producto</th>
 						<th>Cantidad</th>
 						<th>Precio</th>
-						<th>IVA</th>
                         <th>Dcto</th>
-						<th>Estado</th>
+						<th>IVA</th>
                         <th>Subtotal</th>
     				</thead>
                     <tfoot>
                         <th>Total</th>
-                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -188,24 +179,24 @@
         producto=$("#pidproducto option:selected").text();
         cantidad=$("#pcantidad").val();
         precio=$("#pprecio").val();
-        impuesto=$("pimpuesto").val();
+        impuesto=$("#pimpuesto").val();
         descuento=$("#pdescuento").val();
         descripcion=$("#pdescripcion").val();
 
         /*se valida que los campos anteriores no esten vacios*/
-		if(idproducto!="" && cantidad!="" && cantidad>0 && precio!="" && impuesto!="" descuento!="")
+        if(idproducto!="" && cantidad!="" && cantidad>0 && precio!="" && impuesto!="" && descuento!="")
         {
 
             subtotal[cont]=(cantidad*precio-descuento);
             total=total+subtotal[cont]; 
 
- var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idproducto[]" value="'+idproducto+'">'+idproducto+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input type="number" name="precio[]" value="'+precio+'"></td><td><input type="number" name="impuesto[]" value="'+impuesto+'"></td><td><input type="number" name="descuento[]" value="'+descuento+'"></td><td><input type="number" name="impuesto[]" value="'+impuesto+'"></td><td><input type="text" name="descripcion[]" value="'+descripcion+'"></td><td>'+subtotal[cont]+'</td></tr>';
+ var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idproducto[]" value="'+idproducto+'">'+idproducto+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input type="number" name="precio[]" value="'+precio+'"></td><td><input type="number" name="descuento[]" value="'+descuento+'"></td><td><input type="number" name="impuesto[]" value="'+impuesto+'"></td><td>'+subtotal[cont]+'</td></tr>';
             cont++;
             limpiar();
-            $("#total").html("$ "+ total);
-            $("#valor_total").val(total); 
+            $('#total').html("$ "+ total);
+            $('#valor_total').val(total); 
             evaluar();
-            $('#detalles'.append(fila);
+            $('#detalles').append(fila);
         }
         else
         {
@@ -230,7 +221,7 @@
     function elimiar (index){
         total=total-subtotal[index];
         $("total").html("$ " + total);
-        $(valor_total).val(total);
+        $("valor_total").val(total);
         $("#fila" + index).remove();
         evaluar();
     }

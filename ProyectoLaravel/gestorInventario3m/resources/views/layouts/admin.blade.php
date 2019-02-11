@@ -31,7 +31,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="{{url('inicio/inicio')}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>3M's</b></span>
           <!-- logo for regular state and mobile devices -->
@@ -47,7 +47,7 @@
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-              <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+              <li><a href="{{ route('cart-show') }}"  class="fa fa-shopping-cart"></a></li>
               <!-- Messages: style can be found in dropdown.less-->
               
               <!-- User Account: style can be found in dropdown.less -->
@@ -141,11 +141,11 @@
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-at"></i> <span>Envio de Emails</span>
+                <i class="fa fa-line-chart"></i> <span>Estadisticas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('correo/correo')}}"><i class="fa fa-edit"></i>Nuevo email</a></li>
+                <li><a href="{{url('home')}}"><i class="fa fa-area-chart"></i>Graficos</a></li>
                 
               </ul>
             </li>

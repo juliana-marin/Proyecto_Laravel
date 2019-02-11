@@ -1,9 +1,8 @@
 @extends ('layouts.admin')
 @section ('contenido')
 	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Categoría: {{ $categoria->nombre}}</h3>
-			@if (count($errors)>0)
+		<h3>&nbsp; Editar estado de la Venta: {{ $venta->idVenta}}</h3>
+		@if (count($errors)>0)
 			<div class="alert alert-warning">
 				<ul>
 				@foreach ($errors->all() as $error)
@@ -12,21 +11,52 @@
 				</ul>
 			</div>
 			@endif
-
-			{!!Form::model($categoria,['method'=>'PATCH','route'=>['almacen.categoria.update',$categoria->idcategoria]])!!}
+		
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<div class="form-group">
+				<label for="comprobante">Inventario</label>
+				<p>{{$venta->idinventario}}</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<div class="form-group">
+				<label for="comprobante">Fecha</label>
+				<p>{{$venta->fecha}}</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<div class="form-group">
+				<label for="fecha">Valor Total</label>
+				<p>{{$venta->valor_total}}</p>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<div class="form-group">
+				<label for="fecha">Estado</label>
+				<p>{{$venta->estado_venta}}</p>
+			</div>
+		</div>
+	</div>
+	
+			{!!Form::model($venta,['method'=>'PATCH','route'=>['ventas.venta.update',$venta->idVenta]])!!}
             {{Form::token()}}
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <div class="form-group">
-            	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre...">
+            	<label>Cambiar estado de la venta</label>
+            	<select name="estado_venta" class="form-control selectpicker" data-live-search="true">
+            		<option value="activo">Activo</option>
+            		<option value="anulado">Anulado</option>
+            		<option value="cancelado">Cancelado</option>
+            		<option value="finalizado">Finalizado</option>
+            	</select>
             </div>
             <div class="form-group">
-            	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripción...">
-            </div>
-            <div class="form-group">
+            	<label></label>
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
+        </div>    
+        
 
 			{!!Form::close()!!}		
             
