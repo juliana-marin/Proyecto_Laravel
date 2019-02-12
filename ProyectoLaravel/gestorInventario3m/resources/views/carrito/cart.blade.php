@@ -19,23 +19,47 @@
 						<th>Imagen</th>
 						<th>Nombre</th>
 						<th>Precio</th>
+						<th>Cantidad</th>
 						<th>Subtotal</th>
 						<th>Quitar</th>
 				    </thead>
 				    <tbody>
-						@foreach($cart as $item)
 							<tr> 
-								<td><img src="{{asset('imagenes/productos/'.$item->imagen)}}"></td>
-								<td>{{ $item->nombre }}</td>
-								<td>${{ $item->precio }}</td>
-								<td>${{ number_format($item->precio * $item->cantidad) }}</td>
+								<td><img src="{{asset('imagenes/productos/poker.jpg')}}"></td>
+								<td>Poker</td>
+								<td>4000</td>
+								<td>1</td>
+								<td>4000</td>
 								<td>
-									<a href="{{ route('cart-delete', $item->idproducto) }}" class="btn btn-danger">
+									<a href="" class="btn btn-danger">
 										<i class="fa fa-remove"></i>
 									</a>
 								</td>
 							</tr>
-						@endforeach
+							<tr> 
+								<td><img src="{{asset('imagenes/productos/corona.jpg')}}"></td>
+								<td>Corona</td>
+								<td>8000</td>
+								<td>1</td>
+								<td>8000</td>
+								<td>
+									<a href="" class="btn btn-danger">
+										<i class="fa fa-remove"></i>
+									</a>
+								</td>
+							</tr>
+							<tr> 
+								<td><img src="{{asset('imagenes/productos/reds.jpg')}}"></td>
+								<td>Reds</td>
+								<td>4500</td>
+								<td>1</td>
+								<td>4500</td>
+								<td>
+									<a href="" class="btn btn-danger">
+										<i class="fa fa-remove"></i>
+									</a>
+								</td>
+							</tr>
 					</tbody>
 			   </table>
 		   </div>

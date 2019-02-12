@@ -3,7 +3,7 @@
 	<div class="row">
 		 <!-- defiene los tamaños para los distintos dispositivos-->
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nuevo Producto</h3>
+			<h3 type="text" name="title">Nuevo Producto</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-warning">
 				<ul>
@@ -68,8 +68,8 @@
 
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-            	<button class="btn btn-primary" type="submit">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" name="guardar" type="submit">Guardar</button>
+            	<button class="btn btn-danger" name="cancelar" type="reset">Cancelar</button>
             </div>
 		</div>
     </div>

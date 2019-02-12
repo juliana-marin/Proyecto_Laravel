@@ -61,7 +61,7 @@
                   <li class="user-header" style="background-color: #FFFFFF">
                     <p style="color:#848484">
                       Usuario: Administrador - 3 Marias
-                      <medium> Juliana Marín</medium> 
+                      <medium></medium> 
                     </p>
                   </li>
                   

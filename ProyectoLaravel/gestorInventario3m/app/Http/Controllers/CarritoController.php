@@ -31,15 +31,16 @@ class CarritoController extends Controller
         $producto->cantidad =1;
         $cart[$producto->idproducto] = $producto;
     	\Session::put('cart', $cart);
-    		
-    	return redirect()->route('cart-show');
+    	
+    	return redirect()->route('cart-show')->with('message', 'Success!');
+
 
     }
 
     //Eliminar productos del carrito
      public function delete(Producto $producto){
         $cart = \Session::get('cart');
-        unset($cart[$producto->nombre]);
+        unset($cart[$producto->idproducto]);
         \Session::put('cart', $cart);
 
         return redirect()->route('cart-show');

@@ -24,6 +24,7 @@ Route::bind('producto', function($idproducto){
 
 Route::resource('almacen/categoria','CategoriaController');
 Route::resource('almacen/producto','ProductoController');
+Route::resource('almacen/producto','ProductoController');
 Route::resource('ventas/cliente','ClienteController');
 Route::resource('compras/ingreso','IngresoController');
 Route::resource('inventarioProducto/inventario','InventarioController');
@@ -33,11 +34,6 @@ Route::resource('correo/correo','CorreoController');
 Route::resource('menuProductos/menu','MenuController');
 Route::resource('seguridad/usuario','UsuarioController');
 
-
-
-Route::get('form_enviar_correo', 'CorreoController@crear');
-Route::post('enviar_correo', 'CorreoController@enviar');
-Route::post('cargar_archivo_correo', 'CorreoController@store');
 
 Route::auth();
 
